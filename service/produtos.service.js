@@ -10,9 +10,23 @@ export default {
         return resultado.data;
     },
     async createProduto(data){
-        data.createdAt= new Date().toLocaleDateString();
-        data.image = "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-        const resultado = await api.post("/products/", data);
+        const resultado = await api.post("/products", {
+            image: "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+            name: data.name,
+            category: data.category,
+            price: data.price,
+            createdAt: new Date(). toLocaleString(),
+        });
+        return resultado.data;
+    },
+    async updateProduto(data, id){
+        const resultado = await api.put(`/products/${id}`, {
+            image: "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+            name: data.name,
+            category: data.category,
+            price: data.price,
+            createdAt: new Date(). toLocaleString(),
+        });
         return resultado.data;
     },
 };

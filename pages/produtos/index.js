@@ -15,8 +15,10 @@ import {
 } from "react-bootstrap";
 import ItemTable from "../../components/ItemTable";
 import produtosService from "../../service/produtos.service";
+import useAuth from "../../hooks/useAuth";
 
 export default function Produtos() {
+  useAuth();
  
     const [data, setData] = useState ([]);
 
@@ -44,7 +46,11 @@ export default function Produtos() {
             </Link>
           </Col>
         </Row>
-        <ItemTable data={data} header={header} detailLink="produtos" />
+        <ItemTable 
+        data={data} 
+        header={header} 
+        detailLink="produtos"  
+        editLink="produtos/editar" />
       </Card>
     </>
   );
